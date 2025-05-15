@@ -6,44 +6,13 @@
 body {
   min-height: 100vh;
   background-color: #e0f7fa; /* Light Teal Background */
-  color: #000; /* Default Text Color */
   transition: background-color 0.3s, color 0.3s;
+  overflow: hidden;
+  color: #000;
 }
 
 body.dark-mode {
   background-color: #263238; /* Dark Background */
-  color: #0a0303; /* Light Text Color */
-}
-
- button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: transform 0.2s;
- 
-}
- button:hover {
-  transform: scale(1.1);
-}
-
-#theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #000; /* Default Text Color */
-  z-index: 1000; /* Ensure it appears above other elements */
-  padding: 8px;
-  transition: transform 0.2s;
-}
-
-#theme-toggle:hover {
-  transform: scale(1.1);
 }
 
 .container {
@@ -52,6 +21,7 @@ body.dark-mode {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #ffffff; /* White for Clean Look */
+  color: #0a0303; 
   padding: 2rem;
   border-radius: 1rem;
   min-height: 45vh;
@@ -132,3 +102,43 @@ form button {
 form button:hover {
   background-color: #004d40; /* Darker Teal on Hover */
 }
+
+footer {
+  text-align: center;
+  padding: 5px;
+  color: #000;
+}
+
+
+.toggle-button {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  color: black;
+}
+
+.toggle-button div {
+  padding: 10px;
+  color: #000; 
+}
+
+
+.toggle-button:hover div:hover {
+  background-color: #00796b;
+  color: #ffffff;
+  border: #00796b solid 1px;
+  border-radius: 1rem;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s;
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+
+

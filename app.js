@@ -79,19 +79,44 @@ window.addEventListener("load", () => {
   updateExchangeRate();
 });
 
-// Get the theme toggle button
-const toggleBtn = document.getElementById("theme-toggle");
-// Get the body element
-const body = document.body;
+const toggleButton = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const themeText = document.getElementById('theme-text');
 
-// Add an event listener to the button for theme toggle
-toggleBtn.addEventListener("click", () => {
-  // Toggle the "dark-mode" class on the body element
-  body.classList.toggle("dark-mode");
+// Load the saved theme from localStorage
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  document.body.classList.add(savedTheme);
+  updateButtonState(savedTheme);
+}
 
-  // Toggle the icon for sun/moon
-  const icon = toggleBtn.querySelector("i");
-  icon.classList.toggle("fa-sun");
-  icon.classList.toggle("fa-moon");
+// Toggle theme and save state
+toggleButton.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  const isDarkMode = document.body.classList.contains('dark-mode');
+  
+  // Save the theme state in localStorage
+  localStorage.setItem('theme', isDarkMode ? 'dark-mode' : '');
+
+  // Update the button's text and icon
+  updateButtonState(isDarkMode ? 'dark-mode' : '');
 });
 
+// Update the button text and icon
+function updateButtonState(theme) {
+  if (theme === 'dark-mode') {
+    themeIcon.classList.remove('fa-moon');
+    themeIcon.classList.add('fa-sun');
+    themeIcon.style.color = 'white';
+    themeText.style.color = 'white'; 
+    themeText.textContent = 'Light';
+
+
+  } else {
+    themeIcon.classList.remove('fa-sun');
+    themeIcon.classList.add('fa-moon');
+    themeText.textContent = 'Dark';
+    themeIcon.style.color = 'black';
+    themeText.style.color = 'black';
+  }
+}
